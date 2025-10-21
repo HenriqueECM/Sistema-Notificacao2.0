@@ -31,7 +31,7 @@ public class MenuView {
                 ║ 3 - LOGIN                                                ║
                 ║ 4 - SAIR                                                 ║
                 ╚══════════════════════════════════════════════════════════╝
-                Escolha uma operação do sistema: """);
+                Escolha uma operação do sistema:""");
 
             int escolha = SC.nextInt();
             SC.nextLine(); // consome o ENTER
@@ -89,9 +89,9 @@ public class MenuView {
 
         if (user != null) {
             if ("PROFESSOR".equalsIgnoreCase(user.getTipo())) {
-                professorView.menuProfessor();
+                professorView.menuProfessor(user);
             } else if ("ALUNO".equalsIgnoreCase(user.getTipo())) {
-                alunoView.menuAluno();
+                alunoView.menuAluno(user);
             } else {
                 System.out.println("Tipo de usuário não reconhecido!");
             }

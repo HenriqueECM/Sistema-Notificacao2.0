@@ -6,6 +6,7 @@ import org.example.model.Aluno;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 public class AlunoDAO {
     public void criarAluno(Aluno aluno) throws SQLException {
@@ -19,5 +20,9 @@ public class AlunoDAO {
 
             stmt.executeUpdate();
         }
+    }
+
+    public List<Aluno> findByProfessor() {
+        return null;
     }
 }
