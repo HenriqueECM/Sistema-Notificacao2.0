@@ -1,30 +1,21 @@
 package org.example.model;
 
-public class User {
+public abstract class User {
+    protected int id;
+    protected String nome;
+    protected String email;
+    protected String senha;
+    protected String telefone;
+    protected String cpf;
+    protected String tipo;
 
-    private int id;
-    private String nome;
-    private String email;
-    private String senha;
-    private String tipo;
-
-    public User(int id, String nome, String email, String senha, String tipo) {
-        this.id = id;
+    public User(String nome, String email, String senha, String telefone, String cpf, String tipo) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.telefone = telefone;
+        this.cpf = cpf;
         this.tipo = tipo;
-    }
-
-    public User(String nome, String email, String senha, String tipo) {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.tipo = tipo;
-    }
-
-    public User() {
-
     }
 
     public int getId() {
@@ -57,6 +48,22 @@ public class User {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getTipo() {

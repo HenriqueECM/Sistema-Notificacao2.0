@@ -1,6 +1,5 @@
 package org.example.model;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -67,7 +66,7 @@ public class Presenca {
         this.professorId = professorId;
     }
 
-    public Date getDataAvaliacao() {
+    public LocalDate getDataAvaliacao() {
         return dataAvaliacao;
     }
 

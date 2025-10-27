@@ -13,70 +13,36 @@ public class MenuView {
     private static final LoginController loginController = new LoginController();
     private static final AlunoView alunoView = new AlunoView();
     private static final ProfessorView professorView = new ProfessorView();
+    private static final AdminView adminView = new AdminView();
 
     public static void main(String[] args) {
-        menuLoginCadastro();
+        menuPrincipal();
     }
 
-    public static void menuLoginCadastro() {
+    public static void menuPrincipal() {
         boolean sair = false;
-
         while (!sair) {
             System.out.print("""
                 ╔══════════════════════════════════════════════════════════╗
-                ║           SISTEMA NOTIFICAÇÃO: MENU PRINCIPAL            ║
+                ║           SISTEMA DE NOTIFICAÇÃO: MENU PRINCIPAL         ║
                 ╠══════════════════════════════════════════════════════════╣
-                ║ 1 - CADASTRO PROFESSOR                                   ║
-                ║ 2 - CADASTRO ALUNO                                       ║
-                ║ 3 - LOGIN                                                ║
-                ║ 4 - SAIR                                                 ║
+                ║ 1 - LOGIN                                                ║
+                ║ 2 - SAIR                                                 ║
                 ╚══════════════════════════════════════════════════════════╝
-                Escolha uma operação do sistema:""");
+                Escolha uma operação do sistema: """);
 
             int escolha = SC.nextInt();
-            SC.nextLine(); // consome o ENTER
+            SC.nextLine();
 
             switch (escolha) {
-                case 1 -> cadastrarProfessor();
-                case 2 -> cadastrarAluno();
-                case 3 -> login();
-                case 4 -> {
+                case 1 -> login();
+                case 2 -> {
                     sair = true;
                     System.out.println("Finalizando o Sistema...");
                 }
                 default -> System.out.println("Opção inválida!");
             }
         }
-    }
-
-    private static void cadastrarProfessor() {
-        System.out.print("Nome: ");
-        String nome = SC.nextLine();
-        System.out.print("Email: ");
-        String email = SC.nextLine();
-        System.out.print("Senha: ");
-        String senha = SC.nextLine();
-        System.out.print("Telefone: ");
-        String telefone = SC.nextLine();
-        System.out.print("CPF: ");
-        String cpf = SC.nextLine();
-
-        cadastroController.cadastrarProfessor(nome, email, senha, telefone, cpf);
-    }
-
-    private static void cadastrarAluno() {
-        System.out.print("Nome: ");
-        String nome = SC.nextLine();
-        System.out.print("Email: ");
-        String email = SC.nextLine();
-        System.out.print("Senha: ");
-        String senha = SC.nextLine();
-        System.out.print("Matrícula: ");
-        String matricula = SC.nextLine();
-        System.out.print("Turma: ");
-        String turma = SC.nextLine();
-
-        cadastroController.cadastrarAluno(nome, email, senha, matricula, turma);
     }
 
     private static void login() {
@@ -88,13 +54,14 @@ public class MenuView {
         User user = loginController.login(email, senha);
 
         if (user != null) {
-            if ("PROFESSOR".equalsIgnoreCase(user.getTipo())) {
-                professorView.menuProfessor(user);
-            } else if ("ALUNO".equalsIgnoreCase(user.getTipo())) {
-                alunoView.menuAluno(user);
-            } else {
-                System.out.println("Tipo de usuário não reconhecido!");
+            switch (user.getTipo().toUpperCase()) {
+                case "ADMIN" -> adminView.menuAdmin(user);
+                case "PROFESSOR" -> professorView.menuProfessor(user);
+                case "ALUNO" -> alunoView.menuAluno(user);
+                default -> System.out.println("Tipo de usuário não reconhecido!");
             }
+        } else {
+            System.out.println("Credenciais inválidas!");
         }
     }
 }

@@ -1,55 +1,48 @@
 package org.example.view;
 
-import org.example.model.Aluno;
 import org.example.model.User;
-import org.example.repository.AlunoDAO;
+import org.example.service.NotificationService;
 
-import java.time.LocalDate;
-import java.util.List;
 import java.util.Scanner;
 
-import static org.example.view.MenuView.menuLoginCadastro;
-
 public class ProfessorView {
-    static Scanner SC = new Scanner(System.in);
+    private static final Scanner SC = new Scanner(System.in);
+    private final NotificationService notificationService = new NotificationService();
+
     public void menuProfessor(User professor) {
         boolean sair = false;
+        while (!sair) {
+            System.out.print("""
+    ╔══════════════════════════════════════════════════════════╗
+    ║                PAINEL DO PROFESSOR - MENU                ║
+    ╠══════════════════════════════════════════════════════════╣
+    ║ 1 - VISUALIZAR TURMAS                                    ║
+    ║ 2 - REGISTRAR FALTA EM AVALIAÇÃO                         ║
+    ║ 3 - SAIR                                                 ║
+    ╚══════════════════════════════════════════════════════════╝
+    Escolha uma operação do sistema: """);
 
-        System.out.print("""
-                ╔══════════════════════════════════════════════════════════╗
-                ║                     MENU PROFESSOR                       ║
-                ╠══════════════════════════════════════════════════════════╣
-                ║ 1 - LISTAR ALUNOS                                        ║
-                ║ 2 - MARCAR FALTA                                         ║
-                ║ 3 - SAIR                                                 ║
-                ╚══════════════════════════════════════════════════════════╝
-                Escolha uma operação do sistema:""");
-        int escolha = SC.nextInt();
+            int op = SC.nextInt();
+            SC.nextLine();
 
-        switch (escolha){
-            case 1 -> { // Listar alunos
-                AlunoDAO alunoDAO = new AlunoDAO();
-                List<Aluno> alunos = alunoDAO.findByProfessor();
-                alunos.forEach(a -> System.out.printf("%d - %s (%s)\n", a.getId(), a.getNome(), a.getMatricula()));
+            switch (op) {
+                case 1 -> visualizarTurmas();
+                case 2 -> registrarFalta();
+                case 3 -> sair = true;
+                default -> System.out.println("Opção inválida!");
             }
-            case 2 -> { // Marcar falta
-                System.out.print("ID do aluno: ");
-                int alunoId = SC.nextInt(); SC.nextLine();
-                System.out.print("ID da unidade curricular: ");
-                int unidadeId = SC.nextInt(); SC.nextLine();
-                LocalDate dataAvaliacao = LocalDate.now();
-                AttendanceController ac = new AttendanceController();
-                ac.markAbsence(professor.getId(), alunoId, unidadeId, Date.valueOf(dataAvaliacao));
-                System.out.println("Falta registrada e notificação enviada.");
-            }
-            case 3 -> {
-                sair = true;
-                System.out.println("Saindo do menu do professor...");
-            }
-            default -> System.out.println("Opção inválida");
         }
-        if (!sair){
-            menuLoginCadastro();
-        }
+    }
+
+    private void visualizarTurmas() {
+        System.out.println("(Função visualizar turmas - implementar)");
+    }
+
+    private void registrarFalta() {
+        System.out.print("ID do Aluno ausente: ");
+        int alunoId = SC.nextInt(); SC.nextLine();
+        System.out.print("Mensagem da notificação (ex: Faltou na avaliação X): ");
+        String msg = SC.nextLine();
+        notificationService.notificarFalta(alunoId, msg);
     }
 }

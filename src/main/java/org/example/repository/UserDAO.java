@@ -1,50 +1,59 @@
 package org.example.repository;
 
 import org.example.Conexao;
-import org.example.model.User;
+import org.example.model.*;
 
 import java.sql.*;
 
 public class UserDAO {
 
-    public int criarUser(User user) throws SQLException {
-        String sql = "INSERT INTO User (nome, email, senha, tipo) VALUES (?, ?, ?, ?)";
-        try (Connection conn = Conexao.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            stmt.setString(1, user.getNome());
-            stmt.setString(2, user.getEmail());
-            stmt.setString(3, user.getSenha());
-            stmt.setString(4, user.getTipo());
-            stmt.executeUpdate();
-
-            try (ResultSet rs = stmt.getGeneratedKeys()) {
-                if (rs.next()) {
-                    return rs.getInt(1);
-                }
-            }
-        }
-        throw new SQLException("Falha ao criar usuário");
-    }
-
-    public User buscarPorEmailESenha(String email, String senha) throws SQLException {
-        String sql = "SELECT * FROM User WHERE email = ? AND senha = ?";
-        try (Connection conn = Conexao.conectar();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+    public User findByEmailAndSenha(String email, String senha) {
+        String sql = "SELECT * FROM users WHERE email = ? AND senha = ?";
+        try (Connection c = Conexao.conectar();
+             PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setString(1, email);
-            ps.setString(2, senha);
-
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    User user = new User();
-                    user.setId(rs.getInt("id"));
-                    user.setNome(rs.getString("nome"));
-                    user.setEmail(rs.getString("email"));
-                    user.setSenha(rs.getString("senha"));
-                    user.setTipo(rs.getString("tipo"));
-                    return user;
+            ps.setString(2, senha); // em produção: comparar hash!
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String tipo = rs.getString("tipo");
+                if ("ALUNO".equals(tipo)) {
+                    Aluno a = new Aluno(rs.getString("nome"), email, senha, rs.getString("telefone"), rs.getString("cpf"), rs.getString("matricula"));
+                    a.setId(rs.getInt("id"));
+                    return a;
+                } else if ("PROFESSOR".equals(tipo)) {
+                    Professor p = new Professor(rs.getString("nome"), email, senha, rs.getString("telefone"), rs.getString("cpf"));
+                    p.setId(rs.getInt("id"));
+                    return p;
+                } else if ("ADMIN".equals(tipo)) {
+                    Admin adm = new Admin(rs.getString("nome"), email, senha, rs.getString("telefone"), rs.getString("cpf"));
+                    adm.setId(rs.getInt("id"));
+                    return adm;
                 }
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
+    }
+
+    public int saveUser(User user) {
+        String sql = "INSERT INTO users (nome,email,senha,telefone,cpf,tipo,matricula) VALUES (?,?,?,?,?,?,?)";
+        try (Connection c = Conexao.conectar();
+             PreparedStatement ps = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            ps.setString(1, user.getNome());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getSenha());
+            ps.setString(4, user.getTelefone());
+            ps.setString(5, user.getCpf());
+            ps.setString(6, user.getTipo());
+            if (user instanceof Aluno) ps.setString(7, ((Aluno) user).getMatricula());
+            else ps.setNull(7, Types.VARCHAR);
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) return rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 }
