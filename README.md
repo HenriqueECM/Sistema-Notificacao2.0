@@ -31,6 +31,7 @@
 * Figma: utilizado para fazer um design fictício para o sistema
 * MySQL Workbench: utilizado para armazenar os dados e testar funcionalidades do sistema
 * Trello: utilizado para separar nossas funções
+* Canva: utilizado para apresentar nosso sistema e nossas ideias
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -87,6 +88,7 @@ Caso o projeto precise de algum banco de dados, API externa ou configurações e
 
 * Figma: https://www.figma.com/design/a0C2UQWKUpq6a9KYtlAQ0O/Telas?node-id=0-1&t=MQ6E5ythCQE5K3LA-1
 * Trello: https://www.figma.com/design/a0C2UQWKUpq6a9KYtlAQ0O/Telas?node-id=0-1&t=MQ6E5ythCQE5K3LA-1
+* Canva: https://www.canva.com/design/DAG2XfiDR1g/OGUfmsWvNUnnHeaLj47YfQ/edit?utm_content=DAG2XfiDR1g&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
