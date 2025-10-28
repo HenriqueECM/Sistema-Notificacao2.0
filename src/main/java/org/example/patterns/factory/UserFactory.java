@@ -1,4 +1,4 @@
-package org.example.patterns;
+package org.example.patterns.factory;
 
 import org.example.model.*;
 

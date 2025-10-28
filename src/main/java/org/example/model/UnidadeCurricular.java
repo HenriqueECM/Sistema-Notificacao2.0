@@ -6,20 +6,17 @@ public class UnidadeCurricular {
 
     private int id;
     private String nome;
-    private LocalDate dataInicio;
-    private int idProfessor;
+    private String codigo;
 
-    public UnidadeCurricular(int id, String nome, LocalDate dataInicio, int idProfessor) {
+    public UnidadeCurricular(int id, String nome, String codigo) {
         this.id = id;
         this.nome = nome;
-        this.dataInicio = dataInicio;
-        this.idProfessor = idProfessor;
+        this.codigo = codigo;
     }
 
-    public UnidadeCurricular(String nome, LocalDate dataInicio, int idProfessor) {
+    public UnidadeCurricular(String nome, String codigo) {
         this.nome = nome;
-        this.dataInicio = dataInicio;
-        this.idProfessor = idProfessor;
+        this.codigo = codigo;
     }
 
     public int getId() {
@@ -30,13 +27,5 @@ public class UnidadeCurricular {
         return nome;
     }
 
-    public LocalDate getDataInicio() {
-        return dataInicio;
-    }
-
-    public int getIdProfessor() {
-        return idProfessor;
-    }
-
-
+    public String getCodigo() { return codigo; }
 }

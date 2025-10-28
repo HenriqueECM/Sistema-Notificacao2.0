@@ -46,11 +46,18 @@ public class UserDAO {
             ps.setString(4, user.getTelefone());
             ps.setString(5, user.getCpf());
             ps.setString(6, user.getTipo());
-            if (user instanceof Aluno) ps.setString(7, ((Aluno) user).getMatricula());
-            else ps.setNull(7, Types.VARCHAR);
+            if (user instanceof Aluno) {
+                ps.setString(7, ((Aluno) user).getMatricula());
+            } else {
+                ps.setNull(7, Types.VARCHAR);
+            }
+
             ps.executeUpdate();
+
             ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next()) return rs.getInt(1);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

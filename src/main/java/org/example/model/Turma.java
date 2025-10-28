@@ -3,17 +3,17 @@ package org.example.model;
 public class Turma {
     private int id;
     private String nome;
-    private int unidadeId;
+    private String curso;
 
-    public Turma(int id, String nome, int unidadeId) {
+    public Turma(int id, String nome, String curso) {
         this.id = id;
         this.nome = nome;
-        this.unidadeId = unidadeId;
+        this.curso = curso;
     }
 
-    public Turma(String nome, int unidadeId){
+    public Turma(String nome, String curso){
         this.nome = nome;
-        this.unidadeId = unidadeId;
+        this.curso = curso;
     }
 
     public int getId() {
@@ -32,11 +32,11 @@ public class Turma {
         this.nome = nome;
     }
 
-    public int getUnidadeId() {
-        return unidadeId;
+    public String getCurso() {
+        return curso;
     }
 
-    public void setUnidadeId(int unidadeId) {
-        this.unidadeId = unidadeId;
+    public void setCurso(int unidadeId) {
+        this.curso = curso;
     }
 }

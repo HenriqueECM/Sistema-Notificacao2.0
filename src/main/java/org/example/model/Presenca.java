@@ -4,34 +4,25 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Presenca {
-    private int id, alunoId, unidadeCurricularId, professorId;
+    private int id, alunoId, unidadeCurricularId;
     private LocalDate dataAvaliacao;
-    private LocalDateTime createdAt, updatedAt;
-    private String status;
+    private String presente, motivo;
 
-    public Presenca(int id, int alunoId, int unidadeCurricularId, int professorId, LocalDate dataAvaliacao, LocalDateTime createdAt, LocalDateTime updatedAt, String status) {
+    public Presenca(int id, int alunoId, int unidadeCurricularId, LocalDate dataAvaliacao, String presente, String motivo) {
         this.id = id;
         this.alunoId = alunoId;
         this.unidadeCurricularId = unidadeCurricularId;
-        this.professorId = professorId;
         this.dataAvaliacao = dataAvaliacao;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.status = status;
+        this.presente = presente;
+        this.motivo = motivo;
     }
 
-    public Presenca(int alunoId, int unidadeCurricularId, int professorId, LocalDate dataAvaliacao, LocalDateTime createdAt, LocalDateTime updatedAt, String status) {
+    public Presenca(int alunoId, int unidadeCurricularId, LocalDate dataAvaliacao, String presente, String motivo) {
         this.alunoId = alunoId;
         this.unidadeCurricularId = unidadeCurricularId;
-        this.professorId = professorId;
         this.dataAvaliacao = dataAvaliacao;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.status = status;
-    }
-
-    public Presenca() {
-
+        this.presente = presente;
+        this.motivo = motivo;
     }
 
     public int getId() {
@@ -58,14 +49,6 @@ public class Presenca {
         this.unidadeCurricularId = unidadeCurricularId;
     }
 
-    public int getProfessorId() {
-        return professorId;
-    }
-
-    public void setProfessorId(int professorId) {
-        this.professorId = professorId;
-    }
-
     public LocalDate getDataAvaliacao() {
         return dataAvaliacao;
     }
@@ -74,27 +57,11 @@ public class Presenca {
         this.dataAvaliacao = dataAvaliacao;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public String getPresente() {
+        return presente;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void setPresente(String status) {
+        this.presente = status;
     }
 }

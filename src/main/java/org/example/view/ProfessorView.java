@@ -1,13 +1,15 @@
 package org.example.view;
 
+import org.example.controller.ProfessorController;
 import org.example.model.User;
 import org.example.service.NotificationService;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class ProfessorView {
     private static final Scanner SC = new Scanner(System.in);
-    private final NotificationService notificationService = new NotificationService();
+    private final ProfessorController controller = new ProfessorController();
 
     public void menuProfessor(User professor) {
         boolean sair = false;
@@ -35,14 +37,23 @@ public class ProfessorView {
     }
 
     private void visualizarTurmas() {
-        System.out.println("(Função visualizar turmas - implementar)");
+        controller.buscarTurmas();
     }
 
     private void registrarFalta() {
+        System.out.println("ID da turma: ");
+        int turmaId = SC.nextInt();
+
         System.out.print("ID do Aluno ausente: ");
-        int alunoId = SC.nextInt(); SC.nextLine();
-        System.out.print("Mensagem da notificação (ex: Faltou na avaliação X): ");
-        String msg = SC.nextLine();
-        notificationService.notificarFalta(alunoId, msg);
+        int alunoId = SC.nextInt();
+
+        SC.nextLine();
+
+        System.out.println("Motivo da falta: ");
+        String motivo = SC.nextLine();
+
+        LocalDate dataAvaliacao = LocalDate.now();
+
+        controller.registrarFalta(turmaId, alunoId, dataAvaliacao, motivo);
     }
 }
