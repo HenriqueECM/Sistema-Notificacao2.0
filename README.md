@@ -1,9 +1,9 @@
-📍 ##Sistema de Notificação
+📍 ## Sistema de Notificação
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-📑 ##Sumário
+📑 ## Sumário
 
 * Equipe
 * Tecnologias e Ferramentas
@@ -17,7 +17,7 @@
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-👥 ##Equipe
+👥 ## Equipe
 
 * Joana Jensen Schifter
 * Henrique Eduardo da Costa Menel
@@ -25,7 +25,7 @@
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-✨ ##Tecnologias e Ferramentas
+✨ ## Tecnologias e Ferramentas
 
 * IntelliJ IDEA: utilizada para programar nossa aplicação
 * Figma: utilizado para fazer um design fictício para o sistema
@@ -34,7 +34,7 @@
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-📠 ##Funcionalidades
+📠 ## Funcionalidades
 
 * Cadastrar alunos e professores
 * Enviar notificações ao aluno que necessita de uma segunda chamada
@@ -43,7 +43,7 @@
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-📑 ##Como executar o projeto
+📑 ## Como executar o projeto
 
 📠 ##Pré-Requisitos
 
@@ -52,7 +52,7 @@
 * Dependências do Projeto
 * Banco de Dados / Configurações Externas (se necessário)
 
-🖥 ##Instalação e execução
+🖥 ## Instalação e execução
 
 1. Clone o repositório:
 
@@ -83,20 +83,20 @@ Caso o projeto precise de algum banco de dados, API externa ou configurações e
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-🧷 ##Links importantes
+🧷 ## Links importantes
 
 * Figma: https://www.figma.com/design/a0C2UQWKUpq6a9KYtlAQ0O/Telas?node-id=0-1&t=MQ6E5ythCQE5K3LA-1
 * Trello: https://www.figma.com/design/a0C2UQWKUpq6a9KYtlAQ0O/Telas?node-id=0-1&t=MQ6E5ythCQE5K3LA-1
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-👨🏼‍🏫 ##Professor
+👨🏼‍🏫 ## Professor
 
 * Matheus Quost
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-📧 ##Contatos
+📧 ## Contatos
 
 * joanajensenschifter24@gmail.com
 * juscelinor406@gmail.com
