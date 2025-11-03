@@ -32,6 +32,7 @@
 * MySQL Workbench: utilizado para armazenar os dados e testar funcionalidades do sistema
 * Trello: utilizado para separar nossas funções
 * Canva: utilizado para apresentar nosso sistema e nossas ideias
+* LucidChart: utilizado para criar os diagramas que nos ajudariam a desenvolver e explicar nosso sistema
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -87,8 +88,8 @@ Caso o projeto precise de algum banco de dados, API externa ou configurações e
 ## 🧷 Links importantes
 
 * Figma: https://www.figma.com/design/a0C2UQWKUpq6a9KYtlAQ0O/Telas?node-id=0-1&t=MQ6E5ythCQE5K3LA-1
-* Trello: https://www.figma.com/design/a0C2UQWKUpq6a9KYtlAQ0O/Telas?node-id=0-1&t=MQ6E5ythCQE5K3LA-1
 * Canva: https://www.canva.com/design/DAG2XfiDR1g/OGUfmsWvNUnnHeaLj47YfQ/edit?utm_content=DAG2XfiDR1g&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+* LucidChart: https://lucid.app/lucidchart/7eca3da5-115e-49de-b966-1ea4ffbfae53/edit?viewport_loc=281%2C-674%2C8500%2C4166%2C0_0&invitationId=inv_558c521a-63d0-48dc-a390-c80411972f4e
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
