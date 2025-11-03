@@ -23,18 +23,16 @@ public class NotificacaoDAO {
 
     public List<Notificacao> buscarPorAluno(int alunoId) {
         List<Notificacao> notificacoes = new ArrayList<>();
-        String sql = "SELECT * FROM notificacoes WHERE aluno_id = ? ORDER BY created_at DESC";
-        try (Connection c = Conexao.conectar(); PreparedStatement ps = c.prepareStatement(sql)) {
+        String sql = "SELECT mensagem, lida FROM notificacoes WHERE aluno_id = ? ORDER BY created_at DESC";
+
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, alunoId);
             ResultSet rs = ps.executeQuery();
+
             while (rs.next()) {
-                Notificacao n = new Notificacao(
-                        rs.getInt("id"),
-                        rs.getInt("aluno_id"),
-                        rs.getString("mensagem"),
-                        rs.getBoolean("lida"),
-                        rs.getTimestamp("created_at")
-                );
+                Notificacao n = new Notificacao(alunoId, rs.getString("mensagem"));
+                n.setLida(rs.getBoolean("lida"));
                 notificacoes.add(n);
             }
         } catch (SQLException e) {
@@ -43,10 +41,11 @@ public class NotificacaoDAO {
         return notificacoes;
     }
 
-    public void marcarComoLida(int id) {
-        String sql = "UPDATE notificacoes SET lida = TRUE WHERE id = ?";
-        try (Connection c = Conexao.conectar(); PreparedStatement ps = c.prepareStatement(sql)) {
-            ps.setInt(1, id);
+    public void marcarComoLida(int alunoId) {
+        String sql = "UPDATE notificacoes SET lida = TRUE WHERE aluno_id = ? AND lida = FALSE";
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, alunoId);
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

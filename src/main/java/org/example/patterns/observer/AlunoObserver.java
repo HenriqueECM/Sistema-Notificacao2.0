@@ -1,5 +1,7 @@
 package org.example.patterns.observer;
 
+import org.example.model.Notificacao;
+
 public class AlunoObserver implements Observer {
     private final int alunoId;
 
@@ -8,9 +10,9 @@ public class AlunoObserver implements Observer {
     }
 
     @Override
-    public void update(String mensagem, int destinatarioId) {
-        if (this.alunoId == destinatarioId) {
-            System.out.println("\n(Nova notificação para aluno ID " + alunoId + "): " + mensagem);
+    public void update(Notificacao notificacao) {
+        if (this.alunoId == notificacao.getAlunoId()) {
+            System.out.println("\n(Nova notificação para aluno ID " + alunoId + "): " + notificacao.getMensagem());
         }
     }
 }

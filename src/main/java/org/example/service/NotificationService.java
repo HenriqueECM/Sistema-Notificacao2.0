@@ -16,12 +16,14 @@ public class NotificationService {
         subject.addObserver(new AlunoObserver(alunoId));
     }
 
-    public void notificarFalta(int alunoId, String mensagem) {
-        // grava no banco
-        repository.salvarNotificacao(alunoId, mensagem);
+    public void enviarNotificacao(Notificacao notificacao) {
+        repository.salvarNotificacao(notificacao.getAlunoId(), notificacao.getMensagem());
+        subject.notifyObservers(notificacao);
+    }
 
-        // apenas dispara para o observer do aluno
-        subject.notifyObservers(mensagem, alunoId);
+    public void notificarFalta(int alunoId, String mensagem) {
+        Notificacao notificacao = new Notificacao(alunoId, mensagem);
+        enviarNotificacao(notificacao);
     }
 
     public List<Notificacao> listarNotificacoes(int alunoId) {

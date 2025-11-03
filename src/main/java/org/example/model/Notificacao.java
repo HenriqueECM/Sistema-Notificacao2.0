@@ -8,6 +8,7 @@ public class Notificacao {
     private int alunoId;
     private String mensagem;
     private boolean lida;
+
     private LocalDateTime createdAt;
 
     public Notificacao(int alunoId, String mensagem) {
