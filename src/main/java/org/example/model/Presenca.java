@@ -64,4 +64,12 @@ public class Presenca {
     public void setPresente(String status) {
         this.presente = status;
     }
+
+    public String getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
+    }
 }

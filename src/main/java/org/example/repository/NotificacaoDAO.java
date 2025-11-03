@@ -9,12 +9,12 @@ import java.util.List;
 
 public class NotificacaoDAO {
 
-    public void salvar(Notificacao n) {
-        String sql = "INSERT INTO notificacoes (aluno_id, mensagem, lida, created_at) VALUES (?, ?, ?, NOW())";
-        try (Connection c = Conexao.conectar(); PreparedStatement ps = c.prepareStatement(sql)) {
-            ps.setInt(1, n.getAlunoId());
-            ps.setString(2, n.getMensagem());
-            ps.setBoolean(3, n.isLida());
+    public void salvarNotificacao(int alunoId, String mensagem) {
+        String sql = "INSERT INTO notificacoes (aluno_id, mensagem, lida) VALUES (?, ?, FALSE)";
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, alunoId);
+            ps.setString(2, mensagem);
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

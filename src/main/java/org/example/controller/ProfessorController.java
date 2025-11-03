@@ -15,15 +15,15 @@ public class ProfessorController {
     private final TurmaDAO turmaDAO = new TurmaDAO();
     private final NotificationService notificationService = new NotificationService();
 
-    public void registrarFalta(int turmaId, int alunoId, LocalDate dataAvaliacao, String motivo) {
-        int id = presencaDAO.registrarPresenca(turmaId, alunoId, dataAvaliacao, false, motivo);
+    public void registrarFalta(int turmaId, int alunoId,int professorId, LocalDate dataAvaliacao, String motivo) {
+        int id = presencaDAO.registrarPresenca(turmaId, alunoId, professorId, dataAvaliacao, false, motivo);
         if (id > 0) {
-            String mensagem = "Você foi marcado ausente na avaliação do dia " + dataAvaliacao + " na turma " + turmaId;
+            String mensagem = "\nVocê foi marcado ausente na avaliação do dia " + dataAvaliacao + " na turma " + turmaId;
 
             notificationService.adicionarObserverAluno(alunoId);
             notificationService.notificarFalta(alunoId, mensagem);
 
-            System.out.println("Falta registrada e notificação enviada ao aluno (ID " + alunoId + ")");
+            System.out.println("\nFalta registrada e notificação enviada ao aluno (ID " + alunoId + ")");
         } else {
             System.out.println("Erro ao registrar falta.");
         }

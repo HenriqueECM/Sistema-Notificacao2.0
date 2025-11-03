@@ -18,9 +18,9 @@ public class NotificacaoSubject implements Subject {
     }
 
     @Override
-    public void notifyObservers(Notificacao notificacao) {
+    public void notifyObservers(String mensagem, int destinatarioId) {
         for (Observer o : observers) {
-            o.update(notificacao); // cada observador é notificado
+            o.update(mensagem, destinatarioId); // cada observador é notificado
         }
     }
 }

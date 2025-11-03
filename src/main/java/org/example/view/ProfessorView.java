@@ -29,7 +29,7 @@ public class ProfessorView {
 
             switch (op) {
                 case 1 -> visualizarTurmas();
-                case 2 -> registrarFalta();
+                case 2 -> registrarFalta(professor);
                 case 3 -> sair = true;
                 default -> System.out.println("Opção inválida!");
             }
@@ -40,7 +40,7 @@ public class ProfessorView {
         controller.buscarTurmas();
     }
 
-    private void registrarFalta() {
+    private void registrarFalta(User professor) {
         System.out.println("ID da turma: ");
         int turmaId = SC.nextInt();
 
@@ -54,6 +54,6 @@ public class ProfessorView {
 
         LocalDate dataAvaliacao = LocalDate.now();
 
-        controller.registrarFalta(turmaId, alunoId, dataAvaliacao, motivo);
+        controller.registrarFalta(turmaId, alunoId, professor.getId(), dataAvaliacao, motivo);
     }
 }

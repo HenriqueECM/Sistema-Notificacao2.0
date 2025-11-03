@@ -17,6 +17,7 @@ public class TurmaDAO {
             stmt.setString(2, curso);
             stmt.executeUpdate();
 
+            System.out.println("Turma cadastrada com sucesso.");
         } catch (SQLException e){
             e.printStackTrace();
         }

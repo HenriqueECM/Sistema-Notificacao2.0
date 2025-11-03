@@ -17,9 +17,11 @@ public class NotificationService {
     }
 
     public void notificarFalta(int alunoId, String mensagem) {
-        Notificacao n = new Notificacao(alunoId, mensagem);
-        repository.salvar(n);
-        subject.notifyObservers(n); // dispara evento aos observers
+        // grava no banco
+        repository.salvarNotificacao(alunoId, mensagem);
+
+        // apenas dispara para o observer do aluno
+        subject.notifyObservers(mensagem, alunoId);
     }
 
     public List<Notificacao> listarNotificacoes(int alunoId) {

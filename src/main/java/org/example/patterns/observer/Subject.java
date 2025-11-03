@@ -5,5 +5,5 @@ import org.example.model.Notificacao;
 public interface Subject {
     void addObserver(Observer o);
     void removeObserver(Observer o);
-    void notifyObservers(Notificacao notificacao);
+    void notifyObservers(String mensagem, int destinatarioId);
 }
