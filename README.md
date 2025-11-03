@@ -103,4 +103,4 @@ Caso o projeto precise de algum banco de dados, API externa ou configurações e
 
 * joanajensenschifter24@gmail.com
 * juscelinor406@gmail.com
-* henriqueworks@gmail.com
+* henrique_menel@estudante.sesisenai.org.br
