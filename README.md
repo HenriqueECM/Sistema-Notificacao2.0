@@ -57,9 +57,9 @@
 ## 🖥 Instalação e execução
 
 1. Clone o repositório:
-
-git clone <URL do repositório>
-
+```bash
+git clone https://github.com/HenriqueECM/Sistema-Notificacao2.0.git
+```
 
 2. Abra o projeto no IntelliJ (ou a IDEA de sua preferência):
 
